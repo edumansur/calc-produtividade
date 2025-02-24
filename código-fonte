@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int main(void) {
+
+    printf("========================================\n");
+    printf("CALCULADORA DE PRODUTIVIDADE 1.0 \n");
+    printf("CODADO POR: EDUARDO MANSUR DANTAS COSTA\t\n");
+    printf("========================================\n\n");
+
+
+    // Departamentos da empresa
+    char setores[5][30] = {"Marketing", "Linha de Montagem", "Operacoes", "Suporte", "Vendas"};
+
+    // Dados Produtividade + Total (2022)
+    int produtividade2022[5] = {25, 125, 47, 124, 33};
+    int totalProdutividade2022[5] = {29, 143, 55, 135, 45};
+
+    // Dados Produtividade + Total (2023)
+    int produtividade2023[5] = {24, 133, 35, 156, 54};
+    int totalProdutividade2023[5] = {27, 156, 47, 167, 68};
+
+    float variacao, percentual_2022, percentual_2023;
+
+    // Imprimindo o cabeçalho no console
+    printf("============================================================================\n");
+    printf("%-20s | %-16s | %-16s | %-14s \n", "Departamento", "      2022", "      2023", "Variacao (em %)");
+    printf("============================================================================\n");
+
+    // Cálculo
+    for (int i = 0; i < 5; i++) {
+
+        percentual_2022 = ((float) produtividade2022[i] / totalProdutividade2022[i] * 100);
+        percentual_2023 = ((float) produtividade2023[i] / totalProdutividade2023[i] * 100);
+
+        variacao = percentual_2023 - percentual_2022;
+
+
+        printf("%-20s | %7.2f%% de %-4d | %7.2f%% de %-4d | %8.2f%% \n",
+            setores[i], percentual_2022, totalProdutividade2022[i],
+            percentual_2023, totalProdutividade2023[i], variacao);
+
+
+        if (variacao < 0) {
+            printf("Queda na producao!   |\n");
+            printf("============================================================================\n");
+        } else {
+            printf("Aumento na producao! |\n");
+            printf("============================================================================\n");
+        }
+    }
+    return 0;
+}
+
+
+
